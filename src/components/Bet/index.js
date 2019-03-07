@@ -4,7 +4,7 @@ import _ from 'lodash';
 import api from '../../dataStore/stubAPI'
 
 export default class Bet extends Component {
-
+    
     state = {
         status: '',  //will use later for edit bet
         id: this.props.bet.id,
@@ -47,22 +47,17 @@ export default class Bet extends Component {
         let { id, bookie, category, description, odds, stake, potentialwinnings, winloss, settled } = this.state;
         this.setState({
             status: '',
-            previousDetails: { id, bookie, category, description, odds, stake, potentialwinnings, winloss, settled }
+            previousBetDetails: { id, bookie, category, description, odds, stake, potentialwinnings, winloss, settled }
         })
         api.update(this.state.previousBetDetails.id,
             updatedBookie, updatedCategory, updatedBetDescription, updatedOdds, updatedPotentialWinnings, updatedWinLoss, updatedSettled)
     };                              
 
-
-
-
-
-
     handleCancel = () => {
-        let { bookie, category, betDescription, odds, stake, potentialWinnings, winLoss, settled } = this.state.previousDetails;
+        let { id, bookie, category, betDescription, odds, stake, potentialWinnings, winLoss, settled } = this.state.previousBetDetails;
         this.setState({
             status: '',
-            bookie, category, betDescription, odds, stake, potentialWinnings, winLoss, settled
+            id, bookie, category, betDescription, odds, stake, potentialWinnings, winLoss, settled
         });
     };
 
@@ -82,6 +77,7 @@ export default class Bet extends Component {
     handleSettledChange = (e) => this.setState({ settled: e.target.value });
 
     render() {
+        console.log(`Bet ID - ${this.props.bet.id}`)
         let activeButtons = buttons.normal;
         let leftButtonHandler = this.handleEdit;
         let rightButtonHandler = this.handleDelete;
@@ -96,51 +92,116 @@ export default class Bet extends Component {
             rightButtonHandler = this.handleConfirm;
         }
         return (
-
-            <tr>
-                {this.state.status === 'edit' ?
-                    [
-                        <td className="td" value={this.props.bet.bookie} contenteditable='true'
-                            onChange={this.handleBookieChange}> {this.props.bet.bookie}</td>,
-                        <td className="td">{this.props.bet.category}</td>,
-                        <td className="td">{this.props.bet.betDescription}</td>,
-                        <td className="td">{this.props.bet.odds}</td>,
-                        <td className="td">{this.props.bet.stake}</td>,
-                        <td className="td">{this.props.bet.potentialWinnings}</td>,
-                        <td className="td">{this.props.bet.winLoss}</td>,
-                        <td className="td">{this.props.bet.settled}</td>,
-                        <div>
-                            <div className="btn-group" role="group">
-                                <button type="button" className={'btn ' + activeButtons.leftButtonColor}
-                                    onClick={leftButtonHandler} >
-                                    {activeButtons.leftButtonVal}</button>
-                                <button type="button" className={'btn ' + activeButtons.rightButtonColor}
-                                    onClick={rightButtonHandler} >
-                                    {activeButtons.rightButtonVal}</button>
-                            </div>
-                        </div>
-                    ] : [
-                        <td className="td">{this.props.bet.bookie}</td>,
-                        <td className="td">{this.props.bet.category}</td>,
-                        <td className="td">{this.props.bet.betDescription}</td>,
-                        <td className="td">{this.props.bet.odds}</td>,
-                        <td className="td">{this.props.bet.stake}</td>,
-                        <td className="td">{this.props.bet.potentialWinnings}</td>,
-                        <td className="td">{this.props.bet.winLoss}</td>,
-                        <td className="td">{this.props.bet.settled}</td>,
-                    <div>
-                        <div className="btn-group" role="group">
-                            <button type="button" className={'btn ' + activeButtons.leftButtonColor}
-                                onClick={leftButtonHandler} >
-                                {activeButtons.leftButtonVal}</button>
-                            <button type="button" className={'btn ' + activeButtons.rightButtonColor}
-                                onClick={rightButtonHandler} >
-                                {activeButtons.rightButtonVal}</button>
-                        </div>
-                    </div>]
-                }
-            </tr>
-
+          <tr>
+            {this.state.status === "edit"
+              ? [
+                  <td className="td"
+                    value={this.props.bet.bookie} contenteditable="true"
+                    onChange={this.handleBookieChange}>
+                    {this.props.bet.bookie}
+                  </td>,
+                  <td className="td"
+                    value={this.props.bet.category}
+                    contenteditable='true'
+                    onChange={this.handleCategoryChange}>
+                    {this.props.bet.category}
+                  </td>,
+                  <td className="td"
+                    value={this.props.bet.betDescription}
+                    contenteditable='true'
+                    onChange={this.handleDescriptionChange}>
+                    {this.props.bet.betDescription}
+                  </td>,
+                  <td className="td"
+                    value={this.props.bet.odds}
+                    contenteditable='true'
+                    onChange={this.handleOddsChange}>
+                    {this.props.bet.odds}
+                  </td>,
+                  <td className="td"
+                    value={this.props.bet.stake}
+                    contenteditable='true'
+                    onChange={this.handleStakeChange}>
+                    {this.props.bet.stake}
+                  </td>,
+                  <td className="td"
+                    value={this.props.bet.potentialWinnings}
+                    contenteditable='true'
+                    onChange={this.handlePotentialWinningsChange}>
+                    {this.props.bet.potentialWinnings}
+                  </td>,
+                  <td className="td"
+                    value={this.props.bet.winLoss}
+                    contenteditable='true'
+                    onChange={this.handleWinLossChange}>
+                    {this.props.bet.winLoss}
+                    </td>,
+                  <td className="td"
+                    value={this.props.bet.settled}
+                    contenteditable='true'
+                    onChange={this.handleWSettledChange}>
+                  {this.props.bet.settled}
+                  </td>,
+                  <div>
+                    <div className="btn-group" role="group">
+                      <button
+                        type="button"
+                        className={
+                          "btn " + activeButtons.leftButtonColor
+                        }
+                        onClick={leftButtonHandler}
+                      >
+                        {activeButtons.leftButtonVal}
+                      </button>
+                      <button
+                        type="button"
+                        className={
+                          "btn " + activeButtons.rightButtonColor
+                        }
+                        onClick={rightButtonHandler}
+                      >
+                        {activeButtons.rightButtonVal}
+                      </button>
+                    </div>
+                  </div>
+                ]
+              : [
+                  <td className="td">{this.props.bet.bookie}</td>,
+                  <td className="td">{this.props.bet.category}</td>,
+                  <td className="td">
+                    {this.props.bet.betDescription}
+                  </td>,
+                  <td className="td">{this.props.bet.odds}</td>,
+                  <td className="td">{this.props.bet.stake}</td>,
+                  <td className="td">
+                    {this.props.bet.potentialWinnings}
+                  </td>,
+                  <td className="td">{this.props.bet.winLoss}</td>,
+                  <td className="td">{this.props.bet.settled}</td>,
+                  <div>
+                    <div className="btn-group" role="group">
+                      <button
+                        type="button"
+                        className={
+                          "btn " + activeButtons.leftButtonColor
+                        }
+                        onClick={leftButtonHandler}
+                      >
+                        {activeButtons.leftButtonVal}
+                      </button>
+                      <button
+                        type="button"
+                        className={
+                          "btn " + activeButtons.rightButtonColor
+                        }
+                        onClick={rightButtonHandler}
+                      >
+                        {activeButtons.rightButtonVal}
+                      </button>
+                    </div>
+                  </div>
+                ]}
+          </tr>
         );
     }
 }
