@@ -4,6 +4,7 @@ class StubAPI {
     constructor() {
         this.bets = [
             {
+                id: 1,
                 bookie: 'PaddyPower',
                 category: 'Soccer',
                 betDescription: 'Liverpool to win the league',
@@ -11,9 +12,10 @@ class StubAPI {
                 stake: '100',
                 potentialWinnings: '350',
                 winLoss: 'N',
-                settled: 'N'
+                settled: 'Y'
             },
             {
+                id: 2,
                 bookie: 'Bet365',
                 category: 'Soccer',
                 betDescription: 'Liverpool to win the league',
@@ -25,6 +27,7 @@ class StubAPI {
             }
             ,
             {
+                id: 3,
                 bookie: 'BetFair SportsBook',
                 category: 'GAA',
                 betDescription: 'Limerick to win the All Ireland',
@@ -34,12 +37,24 @@ class StubAPI {
                 winLoss: 'N',
                 settled: 'N'
             }
+            ,
+            {
+                id: 4,
+                bookie: 'BetFair Exchange',
+                category: 'F1',
+                betDescription: 'Ferrari to win Constructors Championship 2019',
+                odds: '4',
+                stake: '50',
+                potentialWinnings: '200',
+                winLoss: 'N',
+                settled: 'N'
+            }
         ];
     }
 
     delete(k) {
-        let elements = _.remove(this.contacts,
-            (contact) => contact.phone_number === k
+        let elements = _.remove(this.bets,
+            (bet) => bet.id === k
         );
         return elements;
     }
@@ -47,21 +62,24 @@ class StubAPI {
         return this.bets;
     }
 
-    add(n, a, p) {
-        let len = this.contacts.length;
-        let newLen = this.contacts.push({
-            name: n, address: a, phone_number: p
+    add(b, c, d, o, s, ptw, wl, stld) {
+        let id = 1;
+        let last = _.last(this.bets);
+        if(last) {id = last.id + 1;}
+        let len = this.bets.length;
+        let newLen = this.bets.push({
+            id, bookie: b, category:c, betDescription: d, odds: o, stake: s, potentialWinnings: ptw, winLoss: wl, settled: stld
         });
         return newLen > len;
     }
 
-    update(key, n, a, p) {
-        let index = _.findIndex(this.contacts,
-            (contact) => contact.phone_number === key
+    update(key, b, c, d, o, s, ptw, wl, stld) {
+        let index = _.findIndex(this.bets,
+            (bet) => bet.id === key
         );
         if (index !== -1) {
-            this.contacts.splice(index, 1,
-                { name: n, address: a, phone_number: p });
+            this.bets.splice(index, 1,
+                { bookie: b, category: c, betDescription: d, odds: o, stake: s, potentialWinnings: ptw, winLoss: wl, settled: stld });
             return true;
         }
         return false;
