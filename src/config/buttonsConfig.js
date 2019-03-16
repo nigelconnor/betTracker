@@ -2,7 +2,7 @@ let buttons = {
     normal: {
         leftButtonVal: 'Edit',
         rightButtonVal: 'Delete',
-        leftButtonColor: 'btn-default',
+        leftButtonColor: 'btn',
         rightButtonColor: 'btn-danger'
     },
     delete: {

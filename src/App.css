@@ -2,8 +2,38 @@
        background-color: rgb(224, 175, 12);
        height: 120px;
        padding: 10px;
+       width: 100%;
        color: white;
     }
     .course {
        padding: 10px;
     }
+    .buttonPosition {
+       padding: 0px
+    }
+    .table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 99%;
+      border: 1px solid rgb(51, 44, 41);
+      padding-left: 5px;
+      }
+      .thread {
+      font-family: arial, sans-serif;
+      background-color: #dff0d8;
+      width: 99%;
+      border: 1px solid rgb(51, 44, 41);
+      }
+    .td, th {
+      text-align: left;
+      padding: 8px;
+      
+   }
+    .tr {
+       width: 99%;
+    }  
+   
+    .panel {
+       width: 50%;
+    }
+    
