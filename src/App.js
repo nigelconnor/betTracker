@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Header from './components/header'
+import Footer from './components/footer'
 import AddBetForm from './components/AddBetForm';
 import BetList from './components/BetList';
 import './App.css'
@@ -27,8 +28,10 @@ class App extends Component {
             <AddBetForm addHandler={this.addBet} />
           </div>
         </div>
-        <div> <BetList bets={list} 
-              deleteHandler = {this.deleteBet} /></div>
+        <div> <BetList bets={list}
+          deleteHandler={this.deleteBet} /></div>
+       
+        <Footer />
       </div>
     );
   }

@@ -3,13 +3,20 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "bootstrap": "^3.3.6",
+    "add": "^2.0.6",
+    "bootstrap": "^3.4.1",
     "lodash": "^2.4.2",
-    "react": "^16.5.2",
-    "react-dom": "^16.5.2",
+    "or": "^0.2.0",
+    "react": "^16.8.4",
+    "react-bootstrap": "^1.0.0-beta.5",
+    "react-dom": "^16.8.4",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.1.4",
-    "superagent": "^1.6.1"
+    "react-sticky-footer": "0.1.0-rc3",
+    "reactstrap": "^7.1.0",
+    "superagent": "^1.6.1",
+    "w3-css": "^4.1.0",
+    "yarn": "^1.13.0"
   },
   "scripts": {
     "start": "react-scripts start",
