@@ -92,10 +92,10 @@ export default class Bet extends Component {
   handleWinLossChange = (e) => this.setState({ winloss: e.target.value });
   handleSettledChange = (e) => this.setState({ settled: e.target.value });
 
-
-
   render() {
-    console.log(`Bet ID - ${this.props.bet.id}`)
+    console.log(`Props Bet ID - ${this.props.bet.id}`)
+    console.log(`State - ${this.state.status}`)
+    console.log(`State ID - ${this.state.id}`)
     let activeButtons = buttons.normal;
     let leftButtonHandler = this.handleEdit;
     let rightButtonHandler = this.handleDelete;
@@ -186,14 +186,10 @@ export default class Bet extends Component {
           : [
             <td className="td">{this.props.bet.bookie}</td>,
             <td className="td">{this.props.bet.category}</td>,
-            <td className="td">
-              {this.props.bet.betDescription}
-            </td>,
+            <td className="td">{this.props.bet.betDescription}</td>,
             <td className="td">{this.props.bet.odds}</td>,
             <td className="td">{this.props.bet.stake}</td>,
-            <td className="td">
-              {this.props.bet.potentialWinnings}
-            </td>,
+            <td className="td">{this.props.bet.potentialWinnings}</td>,
             <td className="td">{this.props.bet.winLoss}</td>,
             <td className="td">{this.props.bet.settled}</td>,
             <div>
