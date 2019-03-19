@@ -1,22 +1,24 @@
 # Assignment 1 - ReactJS app.
 
-Name: ... your name ...
+Name: Nigel O'Connor
 
 ## Overview.
-...... A statement of the app concept and objectives (just a few lines) ........
+The BetTracker app is to allow a user to track their bets in one place. People may have bets with many bookies
+       and this app is to help the user with this issue.
 
 
- . . . . . List of user features (excluding user registration and authentication) . . . . 
+ List of user features (excluding user registration and authentication)
  
- + Feature 1
- + Feature 2
- + Feature 3
- + etc
- + etc
+ + Add bet
+ + Edit bet
+ + Delete bet
+ + Show all current bets
 
 ## Installation requirements.
 
-. . . . Briefly state (to a third party) the installation steps necessary to run your app.
+$ git clone https://github.com/nigeloconnor/betTracker.git
+$ cd betTracker
+$ npm install
 
 ## Data Model Design.
 
