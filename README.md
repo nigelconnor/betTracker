@@ -63,7 +63,7 @@ Have played around with many libraries to get the app looking better but instead
 
 
 [model]: ./Model.JPG
-[stories]: ./storybook.png
+[stories]: ./storybook.jpg
 [Welcome]: ./Welcome.JPG
 [header]: ./header.JPG
 [footer]: ./footer.JPG
