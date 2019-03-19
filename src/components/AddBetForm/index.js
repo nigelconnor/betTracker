@@ -70,7 +70,7 @@ export default class AddBetForm extends Component {
                     <div className="container">
                         <div className="col-sm-2" >
                             <label >Odds</label>
-                            <input type="text" className="form-control" id="inputOdds" placeholder="2.0"
+                            <input type = "float" className="form-control" id="inputOdds" placeholder="2.0"
                                 value={this.state.odds}
                                 onChange={this.handleOddsChange}
                             />

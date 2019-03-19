@@ -53,6 +53,20 @@ class StubAPI {
                 settled: 'N',
                 user: 'nigeloconnor'
             }
+
+            ,
+            {
+                id: 5,
+                bookie: 'BetFred',
+                category: 'Soccer',
+                betDescription: 'Ayr to win Scottish Championship 2019',
+                odds: '25',
+                stake: '20',
+                potentialWinnings: '500',
+                winLoss: 'N',
+                settled: 'N',
+                user: 'nigeloconnor'
+            }
         ];
     }
 
@@ -77,13 +91,13 @@ class StubAPI {
         return newLen > len;
     }
 
-    update(key, b, c, d, o, s, ptw, wl, stld, u) {
+    update(key, b, c, d, o, s, ptw, wl, stld) {
         let index = _.findIndex(this.bets,
             (bet) => bet.id === key
         );
         if (index !== -1) {
             this.bets.splice(index, 1,
-                { bookie: b, category: c, betDescription: d, odds: o, stake: s, potentialWinnings: ptw, winLoss: wl, settled: stld, user: u });
+                { bookie: b, category: c, betDescription: d, odds: o, stake: s, potentialWinnings: ptw, winLoss: wl, settled: stld });
             return true;
         }
         return false;

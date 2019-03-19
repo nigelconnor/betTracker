@@ -16,6 +16,7 @@ export default class Bet extends Component {
     potentialWinnings: this.props.bet.potentialWinnings,
     winLoss: this.props.bet.winLoss,
     settled: this.props.bet.settled,
+    user: this.props.bet.user,
     previousBetDetails: {
       id: this.props.bet.id,
       bookie: this.props.bet.bookie,
@@ -56,8 +57,8 @@ export default class Bet extends Component {
     let updatedPotentialWinnings = this.state.potentialWinnings.trim();
     let updatedWinLoss = this.state.winLoss.trim();
     let updatedSettled = this.state.settled.trim();
-    let updatedUser = this.props.match.params.userId;
-
+    let updatedUser = this.props.bet.user;
+    
     if (!updatedBookie || !updatedCategory || !updatedBetDescription || !updatedOdds || !updatedStake || !updatedPotentialWinnings || !updatedWinLoss || !updatedSettled) {
       return;
     }
@@ -134,7 +135,7 @@ export default class Bet extends Component {
             <td className="td"
               value={this.props.bet.odds}
               contentEditable='true'
-              onChange={this.handleOddsChange}>
+              onChange={event => this.setState({ bookie: event.target.value.replace(/\D/, '') })}>
               {this.props.bet.odds}
             </td>,
             <td className="td"
