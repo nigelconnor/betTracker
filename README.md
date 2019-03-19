@@ -62,9 +62,9 @@ Have played around with many libraries to get the app looking better but instead
 
 
 
-[model]: ./Model.jpg
+[model]: ./Model.JPG
 [stories]: ./storybook.JPG
-[Welcome]: ./Welcom.JPG
+[Welcome]: ./Welcome.JPG
 [header]: ./header.JPG
 [footer]: ./footer.JPG
 [AddBet]: ./AddBet.JPG
