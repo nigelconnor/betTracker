@@ -56,6 +56,7 @@ export default class Bet extends Component {
     let updatedPotentialWinnings = this.state.potentialWinnings.trim();
     let updatedWinLoss = this.state.winLoss.trim();
     let updatedSettled = this.state.settled.trim();
+    let updatedUser = this.props.match.params.userId;
 
     if (!updatedBookie || !updatedCategory || !updatedBetDescription || !updatedOdds || !updatedStake || !updatedPotentialWinnings || !updatedWinLoss || !updatedSettled) {
       return;
@@ -66,7 +67,7 @@ export default class Bet extends Component {
       previousBetDetails: { id, bookie, category, description, odds, stake, potentialwinnings, winloss, settled }
     })
     api.update(this.state.previousBetDetails.id,
-      updatedBookie, updatedCategory, updatedBetDescription, updatedOdds, updatedPotentialWinnings, updatedWinLoss, updatedSettled)
+      updatedBookie, updatedCategory, updatedBetDescription, updatedOdds, updatedPotentialWinnings, updatedWinLoss, updatedSettled, updatedUser)
   };
 
   handleCancel = () => {

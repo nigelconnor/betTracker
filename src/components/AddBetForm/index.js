@@ -14,10 +14,12 @@ export default class AddBetForm extends Component {
         let potentialwinnings = this.state.potentialwinnings.trim();
         let winloss = this.state.winloss.trim();
         let settled = this.state.settled.trim();
+        let user = '';
+
         if (!bookie || !category || !description || !odds || !stake || !potentialwinnings || !winloss || !settled) {
             return;
         }
-        this.props.addHandler(bookie, category, description, odds, stake, potentialwinnings, winloss, settled);
+        this.props.addHandler(bookie, category, description, odds, stake, potentialwinnings, winloss, settled, user);
         this.setState({ bookie: '', category: '', description: '', odds: '', stake: '', potentialwinnings: '', winloss: '', settled: '' });
     }
     handleBookieChange = (e) => this.setState({ bookie: e.target.value });

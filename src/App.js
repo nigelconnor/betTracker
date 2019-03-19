@@ -5,11 +5,12 @@ import AddBetForm from './components/AddBetForm';
 import BetList from './components/BetList';
 import './App.css'
 import api from './dataStore/stubAPI'
+import _ from 'lodash'
 
 class App extends Component {
 
-  addBet = (b, c, d, o, s, ptw, wl, stld) => {
-    api.add(b, c, d, o, s, ptw, wl, stld);
+  addBet = (b, c, d, o, s, ptw, wl, stld, u) => {
+    api.add(b, c, d, o, s, ptw, wl, stld, this.props.match.params.userId);
     this.setState({});
   };
 
@@ -19,7 +20,12 @@ class App extends Component {
   };
 
   render() {
-    let list = api.getAll();
+    let list = _.sortBy(api.getAll(), 
+      (l) => l.id
+    );
+
+    let filteredList = _.filter(list, (e) => (e.user.toLowerCase() === this.props.match.params.userId ))
+
     return (
       <div>
         <Header />
@@ -28,7 +34,7 @@ class App extends Component {
             <AddBetForm addHandler={this.addBet} />
           </div>
         </div>
-        <div> <BetList bets={list}
+        <div> <BetList bets={filteredList}
           deleteHandler={this.deleteBet} /></div>
        
         <Footer />

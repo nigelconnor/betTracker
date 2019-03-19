@@ -12,7 +12,8 @@ class StubAPI {
                 stake: '100',
                 potentialWinnings: '350',
                 winLoss: 'N',
-                settled: 'Y'
+                settled: 'Y',
+                user: 'fmullins'
             },
             {
                 id: 2,
@@ -23,7 +24,8 @@ class StubAPI {
                 stake: '100',
                 potentialWinnings: '350',
                 winLoss: 'N',
-                settled: 'N'
+                settled: 'N',
+                user: 'fmullins'
             }
             ,
             {
@@ -35,7 +37,8 @@ class StubAPI {
                 stake: '100',
                 potentialWinnings: '450',
                 winLoss: 'N',
-                settled: 'N'
+                settled: 'N',
+                user: 'nigeloconnor'
             }
             ,
             {
@@ -47,7 +50,8 @@ class StubAPI {
                 stake: '50',
                 potentialWinnings: '200',
                 winLoss: 'N',
-                settled: 'N'
+                settled: 'N',
+                user: 'nigeloconnor'
             }
         ];
     }
@@ -62,24 +66,24 @@ class StubAPI {
         return this.bets;
     }
 
-    add(b, c, d, o, s, ptw, wl, stld) {
+    add(b, c, d, o, s, ptw, wl, stld, u) {
         let id = 1;
         let last = _.last(this.bets);
         if(last) {id = last.id + 1;}
         let len = this.bets.length;
         let newLen = this.bets.push({
-            id, bookie: b, category:c, betDescription: d, odds: o, stake: s, potentialWinnings: ptw, winLoss: wl, settled: stld
+            id, bookie: b, category:c, betDescription: d, odds: o, stake: s, potentialWinnings: ptw, winLoss: wl, settled: stld, user: u
         });
         return newLen > len;
     }
 
-    update(key, b, c, d, o, s, ptw, wl, stld) {
+    update(key, b, c, d, o, s, ptw, wl, stld, u) {
         let index = _.findIndex(this.bets,
             (bet) => bet.id === key
         );
         if (index !== -1) {
             this.bets.splice(index, 1,
-                { bookie: b, category: c, betDescription: d, odds: o, stake: s, potentialWinnings: ptw, winLoss: wl, settled: stld });
+                { bookie: b, category: c, betDescription: d, odds: o, stake: s, potentialWinnings: ptw, winLoss: wl, settled: stld, user: u });
             return true;
         }
         return false;
