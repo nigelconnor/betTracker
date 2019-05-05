@@ -35,6 +35,9 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "@storybook/react": "^3.4.11"
+    "@storybook/react": "^3.4.11",
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "nodemon": "^1.19.0"
   }
 }
