@@ -5,6 +5,7 @@
   "dependencies": {
     "add": "^2.0.6",
     "bootstrap": "^3.4.1",
+    "express": "^4.16.4",
     "lodash": "^2.4.2",
     "or": "^0.2.0",
     "react": "^16.8.4",
