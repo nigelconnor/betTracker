@@ -1,15 +1,22 @@
-
 import dotenv from 'dotenv';
 import express from 'express';
+import betsRouter from './bets';
+import bodyParser from 'body-parser';
 
 dotenv.config();
 
-const server = express();
+const app = express();
 
 const port = process.env.PORT;
 
-server.use(express.static('public'));
+//configure body-parser
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded());
+app.use(express.static('public'));
 
-server.listen(port, () => {
+app.use('/api/bets', betsRouter);
+app.use(express.static('public'));
+
+app.listen(port, () => {
     console.info(`Server running at ${port}`);
 });

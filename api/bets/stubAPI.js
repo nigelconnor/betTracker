@@ -5,7 +5,7 @@ class StubAPI {
         this.bets = [
             {
                 id: 1,
-                bookie: 'PaddyPower',
+                bookie: 'Getting from APi PaddyPower',
                 category: 'Soccer',
                 betDescription: 'Liverpool to win the league',
                 odds: '3.5',
@@ -17,13 +17,13 @@ class StubAPI {
             },
             {
                 id: 2,
-                bookie: 'Bet365',
-                category: 'Soccer',
+                bookie: 'API returning data',
+                category: 'API ',
                 betDescription: 'Liverpool to win the league',
                 odds: '3.5',
                 stake: '100',
                 potentialWinnings: '350',
-                winLoss: 'N',
+                winLoss: 'Y',
                 settled: 'N',
                 user: 'fmullins'
             }
@@ -71,14 +71,32 @@ class StubAPI {
     }
 
     delete(k) {
-        let elements = _.remove(this.bets,
-            (bet) => bet.id === k
-        );
-        return elements;
+        //let elements = _.remove(this.bets,
+        //    (bet) => bet.id === k
+        //);
+        //return elements;
+        let index = k - 1
+            ;
+        if (index !== -1) {
+            this.bets.splice(index, 1)
+        return true;}
+       // else return false;
     }
     getAll() {
         return this.bets;
     }
+
+    getBet(id) {
+        let result = null;
+        const index = _.findIndex(this.bets,
+        (bet) => {
+        return bet.id == id;
+    });
+    if (index !== -1) {
+        result = this.bets[index];
+        }
+    return result;
+     }
 
     add(b, c, d, o, s, ptw, wl, stld, u) {
         let id = 1;
@@ -91,13 +109,14 @@ class StubAPI {
         return newLen > len;
     }
 
-    update(key, b, c, d, o, s, ptw, wl, stld) {
-        let index = _.findIndex(this.bets,
-            (bet) => bet.id === key
-        );
+    update(key, i, b, c, d, o, s, ptw, wl, stld, u) {
+        //let index = _.findIndex(this.bets,
+         //   (bet) => bet.id === key)
+         let index = key -1 
+        ;
         if (index !== -1) {
             this.bets.splice(index, 1,
-                { bookie: b, category: c, betDescription: d, odds: o, stake: s, potentialWinnings: ptw, winLoss: wl, settled: stld });
+                { id: i, bookie: b, category: c, betDescription: d, odds: o, stake: s, potentialWinnings: ptw, winLoss: wl, settled: stld, user: u });
             return true;
         }
         return false;

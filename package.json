@@ -2,8 +2,10 @@
   "name": "hackernews",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:8080",
   "dependencies": {
     "add": "^2.0.6",
+    "axios": "^0.18.0",
     "bootstrap": "^3.4.1",
     "express": "^4.16.4",
     "lodash": "^2.4.2",
