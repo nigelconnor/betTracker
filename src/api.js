@@ -5,9 +5,14 @@ export const update = (id, newBookie, newCategory, newBetDescription, newOdds, n
         .then(resp => resp.data);
 };
 
-export const getAll = () => {
-    return axios('/api/bets')
-        .then(resp => resp.data);
+//export const getAll = async () => {
+//    return await axios.get('/api/bets')
+//        .then(resp => resp.data);
+//};
+
+export const getAll = async () => {
+    const resp = await axios.get('/api/bets')
+    return resp.data;
 };
 
 export const getBet = betId => {
@@ -21,9 +26,10 @@ export const add = (newBookie, newCategory, newBetDescription, newOdds, newStake
 };
 
 export const del = betId => {
-    return axios.delete(`/api/bets/${ betId }`)
+    return axios.delete(`/api/bets/${betId}`)
         .then(() => {
-            return axios.get('/api/bets')
+          return  axios.get('/api/bets')
         })
         .then(resp => resp.data);
-           };
+          };
+    

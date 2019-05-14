@@ -7,7 +7,7 @@ export default class Bet extends Component {
 
   state = {
     status: '',  //will use later for edit bet
-    id: this.props.bet.id,
+    _id: this.props.bet._id,
     bookie: this.props.bet.bookie,
     category: this.props.bet.category,
     betDescription: this.props.bet.betDescription,
@@ -18,7 +18,7 @@ export default class Bet extends Component {
     settled: this.props.bet.settled,
     user: this.props.bet.user,
     previousBetDetails: {
-      id: this.props.bet.id,
+      _id: this.props.bet._id,
       bookie: this.props.bet.bookie,
       category: this.props.bet.category,
       betDescription: this.props.bet.betDescription,
@@ -29,10 +29,10 @@ export default class Bet extends Component {
       settled: this.props.bet.settled
     }
   };
-
+  
   shouldComponentUpdate(nextProps, nextState) {
     let currentBet = {
-      id: this.props.bet.id,
+      _id: this.props.bet._id,
       bookie: this.state.bookie,
       category: this.state.category,
       betDescription: this.state.betDescription,
@@ -62,27 +62,27 @@ export default class Bet extends Component {
     if (!updatedBookie || !updatedCategory || !updatedBetDescription || !updatedOdds || !updatedStake || !updatedPotentialWinnings || !updatedWinLoss || !updatedSettled) {
       return;
     }
-    let { id, bookie, category, description, odds, stake, potentialwinnings, winloss, settled } = this.state;
+    let { _id, bookie, category, description, odds, stake, potentialwinnings, winloss, settled } = this.state;
     this.setState({
       status: '',
-      previousBetDetails: { id, bookie, category, description, odds, stake, potentialwinnings, winloss, settled }
+      previousBetDetails: { _id, bookie, category, description, odds, stake, potentialwinnings, winloss, settled }
     })
-    api.update(this.state.previousBetDetails.id,
+    api.update(this.state.previousBetDetails._id,
       updatedBookie, updatedCategory, updatedBetDescription, updatedOdds, updatedPotentialWinnings, updatedWinLoss, updatedSettled, updatedUser)
   };
 
   handleCancel = () => {
-    let { id, bookie, category, betDescription, odds, stake, potentialWinnings, winLoss, settled } = this.state.previousBetDetails;
+    let { _id, bookie, category, betDescription, odds, stake, potentialWinnings, winLoss, settled } = this.state.previousBetDetails;
     this.setState({
       status: '',
-      id, bookie, category, betDescription, odds, stake, potentialWinnings, winLoss, settled
+      _id, bookie, category, betDescription, odds, stake, potentialWinnings, winLoss, settled
     });
   };
 
-  handleDelete = () => this.setState({ status: 'del', id: this.props.bet.id });
-  handleConfirm = (e) => {
+  handleDelete = () => this.setState({ status: 'del', _id: this.props.bet._id });
+  handleConfirm = async (e) => {
     e.preventDefault();
-    this.props.deleteHandler(this.state.id);
+    this.props.deleteHandler(this.state._id);
   };
 
   handleBookieChange = (e) => this.setState({ bookie: e.target.value });
@@ -95,9 +95,9 @@ export default class Bet extends Component {
   handleSettledChange = (e) => this.setState({ settled: e.target.value });
 
   render() {
-    console.log(`Props Bet ID - ${this.props.bet.id}`)
+    console.log(`Props Bet ID - ${this.props.bet._id}`)
     console.log(`State - ${this.state.status}`)
-    console.log(`State ID - ${this.state.id}`)
+    console.log(`State ID - ${this.state._id}`)
     let activeButtons = buttons.normal;
     let leftButtonHandler = this.handleEdit;
     let rightButtonHandler = this.handleDelete;

@@ -71,16 +71,13 @@ class StubAPI {
     }
 
     delete(k) {
-        //let elements = _.remove(this.bets,
-        //    (bet) => bet.id === k
-        //);
-        //return elements;
-        let index = k - 1
-            ;
-        if (index !== -1) {
+        
+       let index =  _.findIndex(this.bets, function (o) { return o.id == k; });
+        if (index > -1) {
             this.bets.splice(index, 1)
-        return true;}
-       // else return false;
+            return true;
+        }
+        else return false;
     }
     getAll() {
         return this.bets;
@@ -110,10 +107,8 @@ class StubAPI {
     }
 
     update(key, i, b, c, d, o, s, ptw, wl, stld, u) {
-        //let index = _.findIndex(this.bets,
-         //   (bet) => bet.id === key)
-         let index = key -1 
-        ;
+        let index = _.findIndex(this.bets, function (o) { return o.id == key; });
+        
         if (index !== -1) {
             this.bets.splice(index, 1,
                 { id: i, bookie: b, category: c, betDescription: d, odds: o, stake: s, potentialWinnings: ptw, winLoss: wl, settled: stld, user: u });

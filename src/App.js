@@ -11,16 +11,16 @@ class App extends Component {
 
   state = { bets: [{}] };
   
-  componentDidMount() {
-    api.getAll().then(resp => {
-      this.setState({
-        bets: resp.bets
-      });
-    }).catch(console.error);
+  async componentDidMount() {
+    
+    const resp = await api.getAll();
+    this.setState({
+      bets: resp});
+   
   };
   
-  addBet = (b, c, d, o, s, ptw, wl, stld, u) => {
-    api.add(b, c, d, o, s, ptw, wl, stld, this.props.match.params.userId)
+  addBet = async (b, c, d, o, s, ptw, wl, stld, u) => {
+    await api.add(b, c, d, o, s, ptw, wl, stld, this.props.match.params.userId)
     //this.setState({});
     .then(resp => {
       const newBet = { "id": resp.id, "bookie": b, "category": c, "betDescription": d, "odds": o, "stake": s, "potentialWinnings": ptw, "winLoss": wl, "settled": stld, "user": //this.params.match.params.userId };
@@ -28,23 +28,22 @@ class App extends Component {
       this.setState({ bets: this.state.bets.concat([newBet]) });
   });
 
-    
 };
 
-  deleteBet = (key) => {
-    api.del(key)
-      .then(resp => {
-        this.setState({
-          bets: resp.bets
-        });
-      }).catch(console.error);
+  deleteBet = async (key) => {
+    const resp = await api.del(key);
+    this.setState({
+      bets: resp
+    });
   };
+ 
 
   render() {
     //let list = _.sortBy(api.getAll(), 
       let list = _.sortBy(this.state.bets, 
-      (l) => l.id
+      (l) => l._id
     );
+        console.log('App.js log $(list)');
         console.log(list);
     //let filteredList = _.filter(list, (e) => (e.user.toLowerCase() === this.props.match.params.userId ))
 

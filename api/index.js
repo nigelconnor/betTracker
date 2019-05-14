@@ -1,7 +1,13 @@
+import './db';
 import dotenv from 'dotenv';
 import express from 'express';
 import betsRouter from './bets';
 import bodyParser from 'body-parser';
+import {loadBets} from './betsData';
+
+if (process.env.seedDb) {
+    loadBets();
+}
 
 dotenv.config();
 
@@ -20,3 +26,4 @@ app.use(express.static('public'));
 app.listen(port, () => {
     console.info(`Server running at ${port}`);
 });
+
