@@ -2,27 +2,27 @@ import betModel from './bets/betModel';
 
 const bets = [
     {
-        bookie: 'Getting from APi PaddyPower',
+        bookie: 'PaddyPower',
         category: 'Soccer',
-        betDescription: 'Liverpool to win the league',
+        betDescription: 'Liverpool to win the CL',
         odds: 3,
         stake: 100,
-        potentialWinnings: 30,
-        winLoss: 'N',
-        settled: 'Y',
+        potentialWinnings: 300,
+        winLoss: 'L',
+        settled: 'N',
         user: 'fmullins'
     },
     {
        
-        bookie: 'API returning data',
-        category: 'API ',
-        betDescription: 'Liverpool to win the league',
-        odds: 3,
+        bookie: 'BetFair',
+        category: 'Soccer',
+        betDescription: 'Aston Villa to be promoted to Premiership',
+        odds: 2,
         stake: 100,
-        potentialWinnings: 300,
-        winLoss: 'Y',
+        potentialWinnings: 200,
+        winLoss: 'L',
         settled: 'N',
-        user: 'fmullins'
+        user: 'nigeloconnor'
     }
     
 ];

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import buttons from '../../config/buttonsConfig';
-import _ from 'lodash'
-import api from '../../dataStore/stubAPI'
+//import _ from 'lodash'
+//import api from '../../dataStore/stubAPI'
 
 export default class Bet extends Component {
 
@@ -30,7 +30,7 @@ export default class Bet extends Component {
     }
   };
   
-  shouldComponentUpdate(nextProps, nextState) {
+  /* shouldComponentUpdate(nextProps, nextState) {
     let currentBet = {
       _id: this.props.bet._id,
       bookie: this.state.bookie,
@@ -45,18 +45,18 @@ export default class Bet extends Component {
     let same = _.isEqual(nextProps.bet, currentBet)
     return !same || (nextState.status === 'edit')
       || (nextState.status !== this.state.status)
-  };
-  handleEdit = () => this.setState({ status: 'edit' });
-  handleSave = (e) => {
+  }; */
+  handleEdit = () => this.setState({ status: 'edit'});
+  handleSave = async (e) => {
     e.preventDefault();
-    let updatedBookie = this.state.bookie.trim();
-    let updatedCategory = this.state.category.trim();
-    let updatedBetDescription = this.state.betDescription.trim();
-    let updatedOdds = this.state.odds.trim();
-    let updatedStake = this.state.stake.trim();
-    let updatedPotentialWinnings = this.state.potentialWinnings.trim();
-    let updatedWinLoss = this.state.winLoss.trim();
-    let updatedSettled = this.state.settled.trim();
+     let updatedBookie = this.state.bookie;
+    let updatedCategory = this.state.category;
+    let updatedBetDescription = this.state.betDescription;
+    let updatedOdds = this.state.odds;
+    let updatedStake = this.state.stake;
+    let updatedPotentialWinnings = this.state.potentialWinnings;
+    let updatedWinLoss = this.state.winLoss;
+    let updatedSettled = this.state.settled;
     let updatedUser = this.props.bet.user;
     
     if (!updatedBookie || !updatedCategory || !updatedBetDescription || !updatedOdds || !updatedStake || !updatedPotentialWinnings || !updatedWinLoss || !updatedSettled) {
@@ -67,8 +67,8 @@ export default class Bet extends Component {
       status: '',
       previousBetDetails: { _id, bookie, category, description, odds, stake, potentialwinnings, winloss, settled }
     })
-    api.update(this.state.previousBetDetails._id,
-      updatedBookie, updatedCategory, updatedBetDescription, updatedOdds, updatedPotentialWinnings, updatedWinLoss, updatedSettled, updatedUser)
+    this.props.updateHandler(this.state._id,
+      updatedBookie, updatedCategory, updatedBetDescription, updatedOdds, updatedStake, updatedPotentialWinnings, updatedWinLoss, updatedSettled, updatedUser)
   };
 
   handleCancel = () => {
@@ -85,6 +85,7 @@ export default class Bet extends Component {
     this.props.deleteHandler(this.state._id);
   };
 
+  //handleBookieChange = (e) => this.setState({ bookie: e.target.value });
   handleBookieChange = (e) => this.setState({ bookie: e.target.value });
   handleCategoryChange = (e) => this.setState({ category: e.target.value });
   handleDescriptionChange = (e) => this.setState({ description: e.target.value });
@@ -98,6 +99,7 @@ export default class Bet extends Component {
     console.log(`Props Bet ID - ${this.props.bet._id}`)
     console.log(`State - ${this.state.status}`)
     console.log(`State ID - ${this.state._id}`)
+    console.log(`this.state - ${this.state.bookie}`)
     let activeButtons = buttons.normal;
     let leftButtonHandler = this.handleEdit;
     let rightButtonHandler = this.handleDelete;
@@ -115,52 +117,45 @@ export default class Bet extends Component {
       <tr className="tr">
         {this.state.status === "edit"
           ? [
-            <td className="td"
-              value={this.props.bet.bookie} contentEditable="true"
-              onChange={this.handleBookieChange}>
-              {this.props.bet.bookie}
+            <td> <input type="text"
+              value={this.state.bookie}
+              onChange={this.handleBookieChange}
+            />
             </td>,
-            <td className="td"
-              value={this.props.bet.category}
-              contentEditable='true'
-              onChange={this.handleCategoryChange}>
-              {this.props.bet.category}
+            <td> <input type ="text"
+              value={this.state.category}
+              onChange={this.handleCategoryChange}
+              />
             </td>,
-            <td className="td"
-              value={this.props.bet.betDescription}
-              contentEditable='true'
-              onChange={this.handleDescriptionChange}>
-              {this.props.bet.betDescription}
+            <td> <input type = "text"
+              value={this.state.betDescription}
+              onChange={this.handleDescriptionChange}
+              />
             </td>,
-            <td className="td"
-              value={this.props.bet.odds}
-              contentEditable='true'
-              onChange={event => this.setState({ bookie: event.target.value.replace(/\D/, '') })}>
-              {this.props.bet.odds}
+            <td> <input type = "text"
+              value={this.state.odds}
+              onChange={this.handleOddsChange}
+              />
             </td>,
-            <td className="td"
-              value={this.props.bet.stake}
-              contentEditable='true'
-              onChange={this.handleStakeChange}>
-              {this.props.bet.stake}
+            <td> <input type="text"
+              value={this.state.stake}
+              onChange={this.handleStakeChange}
+              />
             </td>,
-            <td className="td"
-              value={this.props.bet.potentialWinnings}
-              contentEditable='true'
-              onChange={this.handlePotentialWinningsChange}>
-              {this.props.bet.potentialWinnings}
+            <td> <input type="text"
+              value={this.state.potentialWinnings}
+              onChange={this.handlePotentialWinningsChange}
+              />
             </td>,
-            <td className="td"
-              value={this.props.bet.winLoss}
-              contentEditable='true'
-              onChange={this.handleWinLossChange}>
-              {this.props.bet.winLoss}
+            <td> <input type="text"
+              value={this.state.winLoss}
+              onChange={this.handleWinLossChange}
+              />
             </td>,
-            <td className="td"
-              value={this.props.bet.settled}
-              contentEditable='true'
-              onChange={this.handleSettledChange}>
-              {this.props.bet.settled}
+            <td> <input type="text"
+              value={this.state.settled}
+              onChange={this.handleSettledChange}
+              />
             </td>,
             <div>
               <div className="btn-group" role="group">
@@ -186,14 +181,14 @@ export default class Bet extends Component {
             </div>
           ]
           : [
-            <td className="td">{this.props.bet.bookie}</td>,
-            <td className="td">{this.props.bet.category}</td>,
-            <td className="td">{this.props.bet.betDescription}</td>,
-            <td className="td">{this.props.bet.odds}</td>,
-            <td className="td">{this.props.bet.stake}</td>,
-            <td className="td">{this.props.bet.potentialWinnings}</td>,
-            <td className="td">{this.props.bet.winLoss}</td>,
-            <td className="td">{this.props.bet.settled}</td>,
+            <td className="td">{this.state.bookie}</td>,
+            <td className="td">{this.state.category}</td>,
+            <td className="td">{this.state.betDescription}</td>,
+            <td className="td">{this.state.odds}</td>,
+            <td className="td">{this.state.stake}</td>,
+            <td className="td">{this.state.potentialWinnings}</td>,
+            <td className="td">{this.state.winLoss}</td>,
+            <td className="td">{this.state.settled}</td>,
             <div>
               <div className="btn-group" role="group">
                 <button

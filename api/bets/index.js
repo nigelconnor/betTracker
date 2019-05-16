@@ -9,8 +9,6 @@ router.get('/', asyncHandler( async (req, res) => {
     try {
         const bets = await Bet.find();
         res.status(200).json(bets);
-        //return res.send(bets);
-       // res.send({ bets: bets }); // used on old api 
     } catch (error) {
         handleError(res, error.message);
     }
@@ -31,6 +29,7 @@ router.post('/', asyncHandler(async (req, res) => {
 // Update a bet
 router.put('/:id', asyncHandler(async (req, res) => {
     if (req.body._id) delete req.body._id;
+    console.log(req.params.id);
     const bet = await Bet.update({
         _id: req.params.id,
     }, req.body, {

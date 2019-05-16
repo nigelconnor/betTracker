@@ -31,12 +31,20 @@ class App extends Component {
 };
 
   deleteBet = async (key) => {
+    try{
     const resp = await api.del(key);
     this.setState({
       bets: resp
     });
+  } catch(e) { alert (`failed to delete bet: ${e}`)}
   };
  
+  updateBet = async(i, b, c, d, o, s, ptw, wl, stld, u) => {
+    try{
+    await api.update(i, b, c, d, o, s, ptw, wl, stld, u);
+    this.setState({});
+  } catch(e) {alert (`failed to update bet: ${e}`)}
+  };
 
   render() {
     //let list = _.sortBy(api.getAll(), 
@@ -56,7 +64,8 @@ class App extends Component {
           </div>
         </div>
         <div> <BetList bets={list}
-          deleteHandler={this.deleteBet} /></div>
+          deleteHandler={this.deleteBet} 
+          updateHandler={this.updateBet}/></div>
        
         <Footer />
       </div>

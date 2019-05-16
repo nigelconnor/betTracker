@@ -26,11 +26,11 @@
       }
     .td, th {
       text-align: left;
-      padding: 8px;
+      padding: 4px;
       
    }
     .tr {
-       width: 99%;
+       width: 75%;
     }  
    
     .panel {
