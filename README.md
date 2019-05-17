@@ -1,4 +1,4 @@
-# Assignment 1 - ReactJS app.
+# Assignment 2 - ReactJS app.
 
 Name: Nigel O'Connor
 
@@ -17,7 +17,12 @@ The BetTracker app is to allow a user to track their bets in one place. People m
 $ git clone https://github.com/nigeloconnor/betTracker.git
 $ cd betTracker
 $ npm install
-$ npm start
+$ npm start   - this will start React App
+$ cd betTracker/Api/
+$ npm install
+$ npm start   - this will start Api
+
+$ MongoDB should also be installed on computer
 
 $ npx start-storybook -p 9001 -c .storybook
 
@@ -45,16 +50,25 @@ Some basic Storybook functionality
 
 ## Routing.
 
-+ Login - Displays welcome page with links to 2 user logins. Header + Footer static throughout.
-+ /App/:userid - parameterized (:userid) per user - allowing bets to be added/edited/deleted for user and
+![][Api]
++ Login - Displays login screen. Header + Footer static throughout.
++ / - Once user logs in successfully BetTracker page shows bets to be added/edited/deleted and
   displays bet history
 
 ## Extra features
 
- Added Login details using React-Bootstrap library
- Added improved re-redenering to stop unnecessary rendering
- Passed userid from route to use in adding/editing/deleting 
- Used W3 library for footer 
+Bootstrap
+Storybook
+loadsh
+Babel
+Nodemon
+dotenv
+express
+Mongoose
+express async handler
+passport / jwt / hashing and salting
+axios
+
 
 ## Independent learning.
 
@@ -69,4 +83,5 @@ Have played around with many libraries to get the app looking better but instead
 [footer]: ./footer.JPG
 [AddBet]: ./AddBet.JPG
 [BetList]: ./BetList.JPG
+[Api]: ./apidata.jp
 
