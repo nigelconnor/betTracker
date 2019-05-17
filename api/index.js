@@ -6,6 +6,7 @@ import bodyParser from 'body-parser';
 import {loadBets} from './betsData';
 import loadUsers from './userData';
 import usersRouter from './users';
+import passport from './auth';
 
 if (process.env.seedDb) {
     loadBets();
@@ -23,8 +24,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(express.static('public'));
 
+//app.use(passport.initialize());​
 app.use('/api/bets', betsRouter);
 app.use('/api/users', usersRouter);
+app.use('/api/bets', passport.authenticate('jwt', { session: false }), betsRouter);
 app.use(express.static('public'));
 
 app.listen(port, () => {

@@ -7,7 +7,7 @@ class StubAPI {
                 id: 1,
                 bookie: 'PaddyPower',
                 category: 'Soccer',
-                betDescription: 'Liverpool to win the league',
+                betdescription: 'Liverpool to win the league',
                 odds: '3.5',
                 stake: '100',
                 potentialWinnings: '350',
@@ -19,7 +19,7 @@ class StubAPI {
                 id: 2,
                 bookie: 'Bet365',
                 category: 'Soccer',
-                betDescription: 'Liverpool to win the league',
+                betdescription: 'Liverpool to win the league',
                 odds: '3.5',
                 stake: '100',
                 potentialWinnings: '350',
@@ -32,7 +32,7 @@ class StubAPI {
                 id: 3,
                 bookie: 'BetFair SportsBook',
                 category: 'GAA',
-                betDescription: 'Limerick to win the All Ireland',
+                betdescription: 'Limerick to win the All Ireland',
                 odds: '4.5',
                 stake: '100',
                 potentialWinnings: '450',
@@ -45,7 +45,7 @@ class StubAPI {
                 id: 4,
                 bookie: 'BetFair Exchange',
                 category: 'F1',
-                betDescription: 'Ferrari to win Constructors Championship 2019',
+                betdescription: 'Ferrari to win Constructors Championship 2019',
                 odds: '4',
                 stake: '50',
                 potentialWinnings: '200',
@@ -59,7 +59,7 @@ class StubAPI {
                 id: 5,
                 bookie: 'BetFred',
                 category: 'Soccer',
-                betDescription: 'Ayr to win Scottish Championship 2019',
+                betdescription: 'Ayr to win Scottish Championship 2019',
                 odds: '25',
                 stake: '20',
                 potentialWinnings: '500',
@@ -86,7 +86,7 @@ class StubAPI {
         if(last) {id = last.id + 1;}
         let len = this.bets.length;
         let newLen = this.bets.push({
-            id, bookie: b, category:c, betDescription: d, odds: o, stake: s, potentialWinnings: ptw, winLoss: wl, settled: stld, user: u
+            id, bookie: b, category:c, betdescription: d, odds: o, stake: s, potentialWinnings: ptw, winLoss: wl, settled: stld, user: u
         });
         return newLen > len;
     }
@@ -97,7 +97,7 @@ class StubAPI {
         );
         if (index !== -1) {
             this.bets.splice(index, 1,
-                { bookie: b, category: c, betDescription: d, odds: o, stake: s, potentialWinnings: ptw, winLoss: wl, settled: stld });
+                { bookie: b, category: c, betdescription: d, odds: o, stake: s, potentialWinnings: ptw, winLoss: wl, settled: stld });
             return true;
         }
         return false;

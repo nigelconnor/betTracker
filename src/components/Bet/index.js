@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import buttons from '../../config/buttonsConfig';
-//import _ from 'lodash'
+import _ from 'lodash'
 //import api from '../../dataStore/stubAPI'
 
 export default class Bet extends Component {
@@ -10,7 +10,7 @@ export default class Bet extends Component {
     _id: this.props.bet._id,
     bookie: this.props.bet.bookie,
     category: this.props.bet.category,
-    betDescription: this.props.bet.betDescription,
+    betdescription: this.props.bet.betdescription,
     odds: this.props.bet.odds,
     stake: this.props.bet.stake,
     potentialWinnings: this.props.bet.potentialWinnings,
@@ -21,7 +21,7 @@ export default class Bet extends Component {
       _id: this.props.bet._id,
       bookie: this.props.bet.bookie,
       category: this.props.bet.category,
-      betDescription: this.props.bet.betDescription,
+      betdescription: this.props.bet.betdescription,
       odds: this.props.bet.odds,
       stake: this.props.bet.stake,
       potentialWinnings: this.props.bet.potentialWinnings,
@@ -30,12 +30,12 @@ export default class Bet extends Component {
     }
   };
   
-  /* shouldComponentUpdate(nextProps, nextState) {
+   shouldComponentUpdate(nextProps, nextState) {
     let currentBet = {
       _id: this.props.bet._id,
       bookie: this.state.bookie,
       category: this.state.category,
-      betDescription: this.state.betDescription,
+      betdescription: this.state.betdescription,
       odds: this.state.odds,
       stake: this.state.stake,
       potentialWinnings: this.state.potentialWinnings,
@@ -45,13 +45,13 @@ export default class Bet extends Component {
     let same = _.isEqual(nextProps.bet, currentBet)
     return !same || (nextState.status === 'edit')
       || (nextState.status !== this.state.status)
-  }; */
+  }; 
   handleEdit = () => this.setState({ status: 'edit'});
   handleSave = async (e) => {
     e.preventDefault();
      let updatedBookie = this.state.bookie;
     let updatedCategory = this.state.category;
-    let updatedBetDescription = this.state.betDescription;
+    let updatedbetdescription = this.state.betdescription;
     let updatedOdds = this.state.odds;
     let updatedStake = this.state.stake;
     let updatedPotentialWinnings = this.state.potentialWinnings;
@@ -59,7 +59,7 @@ export default class Bet extends Component {
     let updatedSettled = this.state.settled;
     let updatedUser = this.props.bet.user;
     
-    if (!updatedBookie || !updatedCategory || !updatedBetDescription || !updatedOdds || !updatedStake || !updatedPotentialWinnings || !updatedWinLoss || !updatedSettled) {
+    if (!updatedBookie || !updatedCategory || !updatedbetdescription || !updatedOdds || !updatedStake || !updatedPotentialWinnings || !updatedWinLoss || !updatedSettled) {
       return;
     }
     let { _id, bookie, category, description, odds, stake, potentialwinnings, winloss, settled } = this.state;
@@ -68,14 +68,14 @@ export default class Bet extends Component {
       previousBetDetails: { _id, bookie, category, description, odds, stake, potentialwinnings, winloss, settled }
     })
     this.props.updateHandler(this.state._id,
-      updatedBookie, updatedCategory, updatedBetDescription, updatedOdds, updatedStake, updatedPotentialWinnings, updatedWinLoss, updatedSettled, updatedUser)
+      updatedBookie, updatedCategory, updatedbetdescription, updatedOdds, updatedStake, updatedPotentialWinnings, updatedWinLoss, updatedSettled, updatedUser)
   };
 
   handleCancel = () => {
-    let { _id, bookie, category, betDescription, odds, stake, potentialWinnings, winLoss, settled } = this.state.previousBetDetails;
+    let { _id, bookie, category, betdescription, odds, stake, potentialWinnings, winLoss, settled } = this.state.previousBetDetails;
     this.setState({
       status: '',
-      _id, bookie, category, betDescription, odds, stake, potentialWinnings, winLoss, settled
+      _id, bookie, category, betdescription, odds, stake, potentialWinnings, winLoss, settled
     });
   };
 
@@ -128,21 +128,21 @@ export default class Bet extends Component {
               />
             </td>,
             <td> <input type = "text"
-              value={this.state.betDescription}
+              value={this.state.betdescription}
               onChange={this.handleDescriptionChange}
               />
             </td>,
-            <td> <input type = "text"
+            <td> <input type = "number"
               value={this.state.odds}
               onChange={this.handleOddsChange}
               />
             </td>,
-            <td> <input type="text"
+            <td> <input type="number"
               value={this.state.stake}
               onChange={this.handleStakeChange}
               />
             </td>,
-            <td> <input type="text"
+            <td> <input type="number"
               value={this.state.potentialWinnings}
               onChange={this.handlePotentialWinningsChange}
               />
@@ -183,7 +183,7 @@ export default class Bet extends Component {
           : [
             <td className="td">{this.state.bookie}</td>,
             <td className="td">{this.state.category}</td>,
-            <td className="td">{this.state.betDescription}</td>,
+            <td className="td">{this.state.betdescription}</td>,
             <td className="td">{this.state.odds}</td>,
             <td className="td">{this.state.stake}</td>,
             <td className="td">{this.state.potentialWinnings}</td>,

@@ -4,7 +4,7 @@ const bets = [
     {
         bookie: 'PaddyPower',
         category: 'Soccer',
-        betDescription: 'Liverpool to win the CL',
+        betdescription: 'Liverpool to win the CL',
         odds: 3,
         stake: 100,
         potentialWinnings: 300,
@@ -16,13 +16,35 @@ const bets = [
        
         bookie: 'BetFair',
         category: 'Soccer',
-        betDescription: 'Aston Villa to be promoted to Premiership',
+        betdescription: 'Aston Villa to be promoted to Premiership',
         odds: 2,
         stake: 100,
         potentialWinnings: 200,
         winLoss: 'L',
         settled: 'N',
         user: 'nigeloconnor'
+    },
+    {
+        bookie: 'Bet365',
+        category: 'Hurling',
+        betdescription: 'Limerick to win the All Ireland',
+        odds: 3,
+        stake: 100,
+        potentialWinnings: 300,
+        winLoss: 'L',
+        settled: 'N',
+        user: 'nigeloconnor'
+    },
+    {
+        bookie: 'Betfred',
+        category: 'Golf',
+        betdescription: 'Dustin Johnson to win British Open',
+        odds: 14,
+        stake: 100,
+        potentialWinnings: 1400,
+        winLoss: 'L',
+        settled: 'N',
+        user: 'fmullins'
     }
     
 ];

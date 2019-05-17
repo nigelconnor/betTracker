@@ -3,33 +3,16 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
 import App from './App';
 import '../node_modules/bootstrap/dist/css/bootstrap.css';
-import Header from './components/header'
-import Login from './components/login'
-import Footer from './components/footer'
-
-
-class Homepage extends Component {
-    render() {
-        return (
-            <div>
-                <Header />
-                <Login />
-                <p> <a href="http://localhost:3000/App/nigeloconnor"> nigeloconnor</a>
-                    <span>....... </span><a href="http://localhost:3000/App/fmullins"> fmullins</a></p>
-                
-                <Footer />
-            </div>
-        );
-    }
-}
+import LoginPage from './components/loginPage'
 
 class Router extends Component {
+    
     render() {
         return (
             <BrowserRouter>
                 <Switch>
-                    <Route path='/App/:userId' component={App} />
-                    <Route exact path='/' component={Homepage} />
+                    <Route path='/login' component={LoginPage} />                   
+                    <Route path='/' component={App} />                     
                     <Redirect from='*' to='/' />
                 </Switch>
             </BrowserRouter>

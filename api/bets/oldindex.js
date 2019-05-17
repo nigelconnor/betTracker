@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
     const newBet = req.body;
 
-    if (newBet && stubAPI.add(newBet.bookie, newBet.category, newBet.betDescription, newBet.odds, newBet.stake, newBet.potentialWinnings, newBet.winLoss, newBet.settled, newBet.user)) {
+    if (newBet && stubAPI.add(newBet.bookie, newBet.category, newBet.betdescription, newBet.odds, newBet.stake, newBet.potentialWinnings, newBet.winLoss, newBet.settled, newBet.user)) {
         return res.status(201).send({ message: 'Bet Created' });
     }
     return res.status(400).send({ message: 'Unable to find Bet in request.' });
@@ -36,7 +36,7 @@ router.put('/:id', (req, res) => {
     const key = req.params.id;
     const updateBet = req.body;
 
-    if (updateBet && stubAPI.update(key, key, updateBet.bookie, updateBet.category, updateBet.betDescription, updateBet.odds, updateBet.stake, updateBet.potentialWinnings, updateBet.winLoss, updateBet.settled, updateBet.user)) {
+    if (updateBet && stubAPI.update(key, key, updateBet.bookie, updateBet.category, updateBet.betdescription, updateBet.odds, updateBet.stake, updateBet.potentialWinnings, updateBet.winLoss, updateBet.settled, updateBet.user)) {
         res.status(200).send({ message: 'Bet Updated' });
     } else {
         res.status(400).send({ message: 'Unable to find bet in request. No Bet Found in body' });

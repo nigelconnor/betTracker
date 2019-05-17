@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const BetSchema = new Schema({
     bookie: { type: String, required: true },
     category: { type: String, required: true },
-    betDescription: { type: String, required: true },
+    betdescription: { type: String, required: true },
     odds: {
         type: Number,
         min: 0,

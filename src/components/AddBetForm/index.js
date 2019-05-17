@@ -14,12 +14,12 @@ export default class AddBetForm extends Component {
         let potentialwinnings = this.state.potentialwinnings.trim();
         let winloss = this.state.winloss.trim();
         let settled = this.state.settled.trim();
-        let user = '';
+        //let username = '';
 
         if (!bookie || !category || !description || !odds || !stake || !potentialwinnings || !winloss || !settled) {
             return;
         }
-        this.props.addHandler(bookie, category, description, odds, stake, potentialwinnings, winloss, settled, user);
+        this.props.addHandler(bookie, category, description, odds, stake, potentialwinnings, winloss, settled, "fionamullins");
         this.setState({ bookie: '', category: '', description: '', odds: '', stake: '', potentialwinnings: '', winloss: '', settled: '' });
     }
     handleBookieChange = (e) => this.setState({ bookie: e.target.value });
@@ -61,7 +61,7 @@ export default class AddBetForm extends Component {
                         </div>
                         <div className="form-group col-md-4">
                             <label >Bet Description</label>
-                            <input type="text" className="form-control" id="inputBetDescription" placeholder="Bet Description"
+                            <input type="text" className="form-control" id="inputbetdescription" placeholder="Bet Description"
                                 value={this.state.description}
                                 onChange={this.handleDescriptionChange}
                             />

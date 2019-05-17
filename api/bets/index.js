@@ -2,6 +2,7 @@ import express from 'express';
 import Bet from './betModel';
 import asyncHandler from 'express-async-handler';
 
+
 const router = express.Router(); // eslint-disable-line
 
 // Get all bets, using try/catch to handle errors
@@ -22,8 +23,17 @@ router.get('/', asyncHandler( async (req, res) => {
 
 // Create a bet, using async handler
 router.post('/', asyncHandler(async (req, res) => {
-    const bet = await Bet.create(req.body);
-    res.status(201).json(bet);
+    //const bet = await Bet.create(req.body);
+    //res.status(201).json(bet);
+
+    const newBet = req.body;
+    //newBet.user = req.userId || 'anonymous';
+    if (newBet) {
+        const bet = await Bet.create(newBet);
+        return res.status(201).send({ bet });
+    } else {
+        return handleError(res, err);
+    }
 }));
 
 // Update a bet

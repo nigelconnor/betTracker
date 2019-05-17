@@ -6,25 +6,33 @@ import BetList from './components/BetList';
 import './App.css'
 import * as api from './api';
 import _ from 'lodash'
+import { Link } from "react-router-dom";
 
 class App extends Component {
 
   state = { bets: [{}] };
   
   async componentDidMount() {
-    
-    const resp = await api.getAll();
-    this.setState({
-      bets: resp});
-   
+    try {
+      const resp = await api.getAll();
+      this.setState({
+        bets: resp,
+        isHidden: false,
+      });
+    } catch (e) {
+      this.setState({
+        isHidden: true
+      });
+    }
   };
-  
-  addBet = async (b, c, d, o, s, ptw, wl, stld, u) => {
-    await api.add(b, c, d, o, s, ptw, wl, stld, this.props.match.params.userId)
+
+  addBet = async (b, c, d, o, s, ptw, wl, stld, u ) => {
+    await api.add(b, c, d, o, s, ptw, wl, stld, u )
     //this.setState({});
     .then(resp => {
-      const newBet = { "id": resp.id, "bookie": b, "category": c, "betDescription": d, "odds": o, "stake": s, "potentialWinnings": ptw, "winLoss": wl, "settled": stld, "user": //this.params.match.params.userId };
-      "newperson" };
+      const newBet = { "id": resp.id, "bookie": b, "category": c, "betdescription": d, "odds": o, "stake": s, "potentialWinnings": ptw, "winLoss": wl, "settled": stld, "username": "fionamullins" };
+      //"user": //this.params.match.params.userId };
+      //"newperson" };
       this.setState({ bets: this.state.bets.concat([newBet]) });
   });
 
@@ -59,13 +67,15 @@ class App extends Component {
       <div>
         <Header />
         <div className="jumbotron">
+          
           <div className="container-fluid">
-            <AddBetForm addHandler={this.addBet} />
+            {this.state.isHidden && <Link to={'/login'}><button type="button" class="btn btn-primary">Log In</button></Link>}
+            {!this.state.isHidden && <AddBetForm addHandler={this.addBet} />}
           </div>
         </div>
-        <div> <BetList bets={list}
+        {!this.state.isHidden && <div> <BetList bets={list}
           deleteHandler={this.deleteBet} 
-          updateHandler={this.updateBet}/></div>
+          updateHandler={this.updateBet}/></div>}
        
         <Footer />
       </div>

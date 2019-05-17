@@ -21,7 +21,7 @@ export default class BetList extends Component {
                             <th className="th">Description</th>
                             <th className="th">Odds</th>
                             <th className="th">Stake</th>
-                            <th className="th">Potenital Winninings</th>
+                            <th className="th">PotenitalWinninings</th>
                             <th className="th">Win/Loss</th>
                             <th className="th">Settled?</th>
                             <th className="th">Options</th>

@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "proxy": "http://localhost:8080",
+  
   "dependencies": {
     "add": "^2.0.6",
     "axios": "^0.18.0",
@@ -22,6 +23,7 @@
     "yarn": "^1.13.0"
   },
   "scripts": {
+    "homepage": "http://localhost:8080/login",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
