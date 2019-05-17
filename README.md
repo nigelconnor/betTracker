@@ -72,7 +72,7 @@ axios
 
 ## Independent learning.
 
-Have played around with many libraries to get the app looking better but instead went back to basics. I have done lots of research on data validation and have implemented some, however none of which has worked as described in research articles. Had difficulty in getting the data to display using a table format but eventually I mananged to get it working. 
+Spend alot of time on stackoverflow and reading material in general during the assignemt process. What I have learnt during this assignment is that it is vital to keep on top of the labs. I have hit so many snags in getting this far with the assignment that I feel if I had another 2 months I could still be adding functionality to this. I also found it vert frustration to read that someone has had the snag as me and they got it working by trying X and X doens't work for me. There are some things that remain a mystery as to parts of the app don't work. I am grateful to Diarmuid and Frank for all their teaching and help along the way.  
 
 
 
@@ -83,5 +83,4 @@ Have played around with many libraries to get the app looking better but instead
 [footer]: ./footer.JPG
 [AddBet]: ./AddBet.JPG
 [BetList]: ./BetList.JPG
-[Api]: ./apidata.jp
-
+[Api]: ./apidata.jpg
