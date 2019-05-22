@@ -83,4 +83,4 @@ Spend alot of time on stackoverflow and reading material in general during the a
 [footer]: ./footer.JPG
 [AddBet]: ./AddBet.JPG
 [BetList]: ./BetList.JPG
-[Api]: ./apidata.JPG
+[Api]: ./apidata.jpg
