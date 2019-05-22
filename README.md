@@ -72,7 +72,7 @@ axios
 
 ## Independent learning.
 
-Spend alot of time on stackoverflow and reading material in general during the assignemt process. What I have learnt during this assignment is that it is vital to keep on top of the labs. I have hit so many snags in getting this far with the assignment that I feel if I had another 2 months I could still be adding functionality to this. I also found it vert frustration to read that someone has had the snag as me and they got it working by trying X and X doens't work for me. There are some things that remain a mystery as to parts of the app don't work. I am grateful to Diarmuid and Frank for all their teaching and help along the way.  
+Spend alot of time on stackoverflow and reading material in general during the assignemt process. What I have learnt during this assignment is that it is vital to keep on top of the labs. I have hit so many snags in getting this far with the assignment that I feel if I had another 2 months I could still be adding functionality to this. I also found it very frustration to read that someone has had the snag as me and they got it working by trying X and X doesn't work for me. There are some things that remain a mystery as to parts of the app don't work. I am grateful to Diarmuid and Frank for all their teaching and help along the way.  
 
 
 
@@ -83,4 +83,4 @@ Spend alot of time on stackoverflow and reading material in general during the a
 [footer]: ./footer.JPG
 [AddBet]: ./AddBet.JPG
 [BetList]: ./BetList.JPG
-[Api]: ./apidata.jpg
+[Api]: ./apidata.JPG

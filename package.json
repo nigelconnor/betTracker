@@ -23,7 +23,7 @@
     "yarn": "^1.13.0"
   },
   "scripts": {
-    "homepage": "http://localhost:8080/login",
+    "homepage": "http://localhost:3000/login",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

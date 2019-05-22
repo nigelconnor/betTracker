@@ -10,7 +10,7 @@ const bets = [
         potentialWinnings: 300,
         winLoss: 'L',
         settled: 'N',
-        user: 'fmullins'
+        user: 'fionamullins'
     },
     {
        
@@ -44,7 +44,7 @@ const bets = [
         potentialWinnings: 1400,
         winLoss: 'L',
         settled: 'N',
-        user: 'fmullins'
+        user: 'fionamullins'
     }
     
 ];

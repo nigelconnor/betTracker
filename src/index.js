@@ -11,7 +11,8 @@ class Router extends Component {
         return (
             <BrowserRouter>
                 <Switch>
-                    <Route path='/login' component={LoginPage} />                   
+                    <Route path='/login' component={LoginPage} />      
+                              
                     <Route path='/' component={App} />                     
                     <Redirect from='*' to='/' />
                 </Switch>
