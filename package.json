@@ -7,19 +7,19 @@
     "add": "^2.0.6",
     "axios": "^0.18.1",
     "bootstrap": "^3.4.1",
-    "express": "^4.16.4",
-    "lodash": "^2.4.2",
+    "express": "^4.17.1",
+    "lodash": "^4.17.15",
     "or": "^0.2.0",
-    "react": "^16.8.4",
-    "react-bootstrap": "^1.0.0-beta.5",
-    "react-dom": "^16.8.4",
-    "react-router-dom": "^4.2.2",
-    "react-scripts": "1.1.4",
+    "react": "^16.13.1",
+    "react-bootstrap": "^1.0.0",
+    "react-dom": "^16.13.1",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "^3.4.1",
     "react-sticky-footer": "0.1.0-rc3",
     "reactstrap": "^7.1.0",
-    "superagent": "^1.6.1",
+    "superagent": "^5.2.2",
     "w3-css": "^4.1.0",
-    "yarn": "^1.13.0"
+    "yarn": "^1.22.4"
   },
   "scripts": {
     "homepage": "http://localhost:3000/login",
@@ -39,9 +39,9 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "@storybook/react": "^3.4.11",
+    "@storybook/react": "^5.3.18",
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.7.0",
-    "nodemon": "^1.19.0"
+    "nodemon": "^1.19.4"
   }
 }
