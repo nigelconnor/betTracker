@@ -8,7 +8,7 @@
     "axios": "^0.18.1",
     "bootstrap": "^3.4.1",
     "express": "^4.16.4",
-    "lodash": "^2.4.2",
+    "lodash": "^4.17.13",
     "or": "^0.2.0",
     "react": "^16.8.4",
     "react-bootstrap": "^1.0.0-beta.5",
