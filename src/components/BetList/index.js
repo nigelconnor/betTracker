@@ -3,6 +3,7 @@ import Bet from "../Bet";
 
 export default class BetList extends Component {
   render() {
+    //debugger;
     return (
       <div>
         <h1>Bet History </h1>
@@ -15,8 +16,7 @@ export default class BetList extends Component {
               <th className="th">Odds</th>
               <th className="th">Stake</th>
               <th className="th">PotenitalWinninings</th>
-              <th className="th">Win/Loss</th>
-              <th className="th">Settled?</th>
+              <th className="th">Status</th>
               <th className="th">Options</th>
             </tr>
           </thead>

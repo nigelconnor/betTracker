@@ -9,8 +9,7 @@ import _ from "lodash";
 import { Link } from "react-router-dom";
 
 class App extends Component {
-  state = { bets: [{}] };
-
+  state = { bets: [] };
   async componentDidMount() {
     try {
       const resp = await api.getAll();
@@ -25,21 +24,21 @@ class App extends Component {
     }
   }
 
-  addBet = async (b, c, d, o, s, ptw, wl, stld, u) => {
+  addBet = async (b, c, d, o, s, ptw, st, u) => {
+    console.log(st);
     await api
-      .add(b, c, d, o, s, ptw, wl, stld, u)
+      .add(b, c, d, o, s, ptw, st, u)
       //this.setState({});
       .then(resp => {
         const newBet = {
-          id: resp.id,
+          _id: resp.bet._id,
           bookie: b,
           category: c,
           betdescription: d,
           odds: o,
           stake: s,
           potentialWinnings: ptw,
-          winLoss: wl,
-          settled: stld,
+          status: st,
           username: "fionamullins"
         };
         //"user": //this.params.match.params.userId };
@@ -69,20 +68,16 @@ class App extends Component {
   };
 
   render() {
-    //let list = _.sortBy(api.getAll(),
     let list = _.sortBy(this.state.bets, l => l._id);
-    console.log("App.js log $(list)");
-    console.log(list);
     //let filteredList = _.filter(list, (e) => (e.user.toLowerCase() === this.props.match.params.userId ))
-
     return (
       <div>
         <Header />
         <div className="jumbotron">
           <div className="container-fluid">
-            {this.state.isHidden && (
+            {!this.state.isHidden && (
               <Link to={"/login"}>
-                <button type="button" class="btn btn-primary">
+                <button type="button" className="btn btn-primary">
                   Log In
                 </button>
               </Link>
