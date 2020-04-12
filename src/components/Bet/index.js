@@ -23,12 +23,12 @@ export default class Bet extends Component {
       odds: this.props.bet.odds,
       stake: this.props.bet.stake,
       potentialWinnings: this.props.bet.potentialWinnings,
-      status: this.props.bet.status
-    }
+      status: this.props.bet.status,
+    },
   };
 
   handleEdit = () => this.setState({ opt: "edit" });
-  handleSave = async e => {
+  handleSave = async (e) => {
     e.preventDefault();
     let updatedBookie = this.state.bookie;
     let updatedCategory = this.state.category;
@@ -59,7 +59,7 @@ export default class Bet extends Component {
       odds,
       stake,
       potentialWinnings,
-      status
+      status,
     } = this.state;
     this.setState({
       opt: "",
@@ -71,8 +71,8 @@ export default class Bet extends Component {
         odds,
         stake,
         potentialWinnings,
-        status
-      }
+        status,
+      },
     });
     this.props.updateHandler(
       this.state._id,
@@ -96,7 +96,7 @@ export default class Bet extends Component {
       odds,
       stake,
       potentialWinnings,
-      status
+      status,
     } = this.state.previousBetDetails;
     this.setState({
       opt: "",
@@ -107,27 +107,27 @@ export default class Bet extends Component {
       odds,
       stake,
       potentialWinnings,
-      status
+      status,
     });
   };
 
   handleDelete = () => this.setState({ opt: "del", _id: this.props.bet._id });
-  handleConfirm = async e => {
+  handleConfirm = async (e) => {
     e.preventDefault();
     this.props.deleteHandler(this.state._id);
   };
 
-  handleBookieChange = e => this.setState({ bookie: e.target.value });
-  handleCategoryChange = e => this.setState({ category: e.target.value });
-  handleDescriptionChange = e =>
+  handleBookieChange = (e) => this.setState({ bookie: e.target.value });
+  handleCategoryChange = (e) => this.setState({ category: e.target.value });
+  handleDescriptionChange = (e) =>
     this.setState({ betdescription: e.target.value });
 
-  handleOddsChange = e => {
+  handleOddsChange = (e) => {
     this.setState({ odds: e.target.value });
     this.setState({ potentialWinnings: this.state.stake * e.target.value });
   };
 
-  handleStakeChange = e => {
+  handleStakeChange = (e) => {
     this.setState({ stake: e.target.value });
     this.setState({ potentialWinnings: e.target.value * this.state.odds });
   };
@@ -137,7 +137,7 @@ export default class Bet extends Component {
   //   this.setState({ potentialWinnings: e.target.value });
   // };
 
-  handleStatusChange = e => this.setState({ status: e.target.value });
+  handleStatusChange = (e) => this.setState({ status: e.target.value });
 
   render() {
     let activeButtons = buttons.normal;
@@ -208,11 +208,16 @@ export default class Bet extends Component {
 
             <td>
               {" "}
-              <input
-                type="text"
+              <select
+                className="form-control form-group col-md-4"
                 value={this.state.status}
                 onChange={this.handleStatusChange}
-              />
+              >
+                <option>......</option>
+                <option>pending</option>
+                <option>won</option>
+                <option>lost</option>
+              </select>
             </td>
             <td>
               <div className="btn-group" role="group">
