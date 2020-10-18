@@ -3,10 +3,12 @@ import Header from "./components/header";
 import Footer from "./components/footer";
 import AddBetForm from "./components/AddBetForm";
 import BetList from "./components/BetList";
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import * as api from "./api";
 import _ from "lodash";
 import { Link } from "react-router-dom";
+import { Form, Row, Col, Jumbotron } from "react-bootstrap";
 
 class App extends Component {
   state = { bets: [] };
@@ -15,11 +17,11 @@ class App extends Component {
       const resp = await api.getAll();
       this.setState({
         bets: resp,
-        isHidden: false
+        isHidden: false,
       });
     } catch (e) {
       this.setState({
-        isHidden: true
+        isHidden: true,
       });
     }
   }
@@ -29,7 +31,7 @@ class App extends Component {
     await api
       .add(b, c, d, o, s, ptw, st, u)
       //this.setState({});
-      .then(resp => {
+      .then((resp) => {
         const newBet = {
           _id: resp.bet._id,
           bookie: b,
@@ -39,7 +41,7 @@ class App extends Component {
           stake: s,
           potentialWinnings: ptw,
           status: st,
-          username: "fionamullins"
+          username: "fionamullins",
         };
         //"user": //this.params.match.params.userId };
         //"newperson" };
@@ -47,11 +49,11 @@ class App extends Component {
       });
   };
 
-  deleteBet = async key => {
+  deleteBet = async (key) => {
     try {
       const resp = await api.del(key);
       this.setState({
-        bets: resp
+        bets: resp,
       });
     } catch (e) {
       alert(`failed to delete bet: ${e}`);
@@ -68,23 +70,26 @@ class App extends Component {
   };
 
   render() {
-    let list = _.sortBy(this.state.bets, l => l._id);
+    let list = _.sortBy(this.state.bets, (l) => l._id);
     //let filteredList = _.filter(list, (e) => (e.user.toLowerCase() === this.props.match.params.userId ))
     return (
       <div>
         <Header />
-        <div className="jumbotron">
-          <div className="container-fluid">
-            {!this.state.isHidden && (
-              <Link to={"/login"}>
-                <button type="button" className="btn btn-primary">
-                  Log In
-                </button>
-              </Link>
-            )}
-            {!this.state.isHidden && <AddBetForm addHandler={this.addBet} />}
-          </div>
-        </div>
+        <Jumbotron>
+          <h3>BetTracker for user: {this.props.match.params.userId} </h3>
+          {!this.state.isHidden && (
+            <Link to={"/login"}>
+              <button type="button" className="btn btn-primary">
+                Log In
+              </button>
+            </Link>
+          )}
+          {!this.state.isHidden && (
+            <Form>
+              <AddBetForm addHandler={this.addBet} />
+            </Form>
+          )}
+        </Jumbotron>
         {!this.state.isHidden && (
           <div>
             <BetList
