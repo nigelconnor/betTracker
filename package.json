@@ -5,17 +5,17 @@
   "proxy": "http://localhost:8080",
   "dependencies": {
     "add": "^2.0.6",
-    "axios": "^0.18.1",
+    "axios": "^0.21.1",
     "bootstrap": "^3.4.1",
     "express": "^4.17.1",
-    "lodash": "^4.17.15",
-    "node-sass": "^4.13.1",
+    "lodash": "^4.17.20",
+    "node-sass": "^5.0.0",
     "or": "^0.2.0",
     "react": "^16.13.1",
     "react-bootstrap": "^1.0.0",
     "react-dom": "^16.13.1",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "^3.4.1",
+    "react-scripts": "^4.0.2",
     "react-sticky-footer": "0.1.0-rc3",
     "reactstrap": "^7.1.0",
     "superagent": "^5.2.2",
@@ -40,9 +40,9 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "@storybook/react": "^5.3.18",
+    "@storybook/react": "^6.1.17",
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.7.0",
-    "nodemon": "^1.19.4"
+    "nodemon": "^2.0.7"
   }
 }
